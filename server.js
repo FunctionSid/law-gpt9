@@ -1,8 +1,13 @@
 const http = require("http");
 
-const port = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
-http.createServer((req, res) => {
-  res.writeHead(200, { "Content-Type": "text/plain" });
-  res.end("hello world from law-gpt9");
-}).listen(port);
+const server = http.createServer((req, res) => {
+  res.statusCode = 200;
+  res.setHeader("Content-Type", "text/plain");
+  res.end("hello world from law-gpt9 build ok");
+});
+
+server.listen(PORT, "0.0.0.0", () => {
+  console.log("server running on port " + PORT);
+});
