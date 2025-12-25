@@ -1,0 +1,105 @@
+LawGPT – Icon & Logo Color + Content Summary
+Global color theme (applies to all icons and logo)
+Background color:
+Deep navy blue (very dark blue, not pure black)
+Used to reduce eye strain and give a calm, legal feel.
+Primary icon color:
+Muted light blue (soft, low-saturation blue)
+Used for symbols like scale, chat, mic, plane.
+Chosen to avoid luxury or aggressive feel.
+Secondary accent (where used):
+Slightly brighter soft cyan / light blue
+Used only for small details to represent AI or interaction.
+Text color (logo only):
+Off-white (not pure white)
+Used to reduce glare and improve readability.
+Overall theme meaning:
+Calm justice, fairness, accessibility, AI support.
+No gold, no red, no green, no neon colors.
+ 
+File-by-file description
+1. accessibility_audio_icon.svg
+Content description:
+A speaker-like symbol with curved sound waves coming out.
+Meaning:
+Audio output
+Accessibility
+Listening mode for blind or low-vision users.
+Colors:
+Background: deep navy blue
+Icon: muted light blue sound waves and circle
+ 
+2. chat_icon.svg
+Content description:
+A rounded rectangular chat bubble with a small tail.
+Meaning:
+Conversation
+Chatbot interaction
+AI assistant entry point.
+Colors:
+Background: deep navy blue
+Icon: muted light blue chat bubble
+ 
+3. justice_scale_icon.svg
+Content description:
+A classic Indian court balance scale (Taraju) with two equal pans.
+Meaning:
+Law
+Justice
+Fairness and balance.
+Colors:
+Background: deep navy blue
+Scale: muted light blue
+No gold or metallic colors used.
+ 
+4. law-gpt-logo.png
+Content description:
+A shield containing a balance scale.
+Below the scale is a small chat symbol.
+Text reads “LawGPT” with a tagline.
+Text content:
+LawGPT
+Law made accessible through AI.
+Colors:
+Background: deep navy blue
+Shield and scale: muted light blue
+Chat symbol: slightly brighter soft cyan
+Text: off-white
+Overall meaning:
+Trusted legal AI assistant with accessibility focus.
+ 
+5. mic_icon.svg
+Content description:
+A simple microphone shape with rounded top and small stand.
+Meaning:
+Voice input
+Speech-to-text
+Hands-free interaction.
+Colors:
+Background: deep navy blue
+Microphone: muted light blue
+ 
+6. send_button_icon.svg
+Content description:
+A forward-pointing arrow / send symbol.
+Meaning:
+Send message
+Submit chat input.
+Colors:
+Background: deep navy blue
+Arrow: muted light blue
+ 
+7. telegram_bot_icon.svg
+Content description:
+A paper plane symbol, commonly used for Telegram.
+Meaning:
+Telegram bot
+Message delivery
+Bot identity.
+Colors:
+Background: deep navy blue
+Plane: muted light blue
+ 
+One-line theme summary (for other AI)
+“All images use a deep navy blue background with muted light blue icons and off-white text. The theme is calm, legal, accessible, and non-luxury, representing LawGPT as an AI legal assistant focused on fairness and accessibility.”
+ 

@@ -1,0 +1,11 @@
+{
+  "pdf": "constitution_of_india.pdf",
+  "text_file": "constitution_of_india_text.txt",
+  "jsonl_file": "constitution_of_india_chunks_with_vectors_v2.jsonl",
+  "bm25_pickle": "constitution_of_india_bm25_index.pkl",
+  "tokenized_pickle": "constitution_of_india_tokenized_texts.pkl",
+  "manifest": "constitution_of_india_manifest.json",
+  "total_article_blocks": 43,
+  "total_chunks": 423,
+  "embedding_model": "all-MiniLM-L6-v2"
+}

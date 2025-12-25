@@ -1,0 +1,23 @@
+[9:06:13 am] 🔍 [DEBUG] Initializing Azure OpenAI Client...
+[9:06:13 am] 🔍 [DEBUG] Connecting to SQLite Database...
+[9:06:13 am] 🔍 [DEBUG] Database loaded successfully.
+[9:09:18 am] 🔍 [DEBUG] Exact Search: Section 103
+[9:09:18 am] 
+--- 🔍 [DEBUG] START SEARCH: "section 103" (k=3) ---
+[9:09:18 am] 🔍 [DEBUG] Step 1: generating embedding from Azure...
+[9:09:19 am] 🔍 [DEBUG] Search Success. Returning 3 docs (truncated).
+[9:09:40 am] 🔍 [DEBUG] Exact Search: Article 103
+[9:09:40 am] 
+--- 🔍 [DEBUG] START SEARCH: "article 103" (k=3) ---
+[9:09:40 am] 🔍 [DEBUG] Step 1: generating embedding from Azure...
+[9:09:42 am] 🔍 [DEBUG] Search Success. Returning 3 docs (truncated).
+[9:10:07 am] 🔍 [DEBUG] Exact Search: Section 103
+[9:10:07 am] 
+--- 🔍 [DEBUG] START SEARCH: "section 103 criminal" (k=3) ---
+[9:10:08 am] 🔍 [DEBUG] Step 1: generating embedding from Azure...
+[9:10:09 am] 🔍 [DEBUG] Search Success. Returning 3 docs (truncated).
+[9:15:24 am] 
+--- 🔍 [DEBUG] START SEARCH: "what sections are applied if persons kmurder in group" (k=3) ---
+[9:15:24 am] 🔍 [DEBUG] Step 1: generating embedding from Azure...
+[9:15:26 am] 🔍 [DEBUG] Search Success. Returning 3 docs (truncated).
+[9:18:16 am] 🔍 [DEBUG] Exact Search: Section 101

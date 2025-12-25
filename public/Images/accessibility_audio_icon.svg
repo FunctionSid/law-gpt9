@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Audio accessibility icon for LawGPT">
+<rect width="128" height="128" rx="24" fill="#0b1f3a"/>
+
+<circle cx="48" cy="64" r="12" fill="#7bbcff"/>
+<path d="M64 48c12 8 12 24 0 32" stroke="#7bbcff" stroke-width="6" fill="none"/>
+<path d="M76 40c20 16 20 32 0 48" stroke="#7bbcff" stroke-width="6" fill="none"/>
+
+</svg>

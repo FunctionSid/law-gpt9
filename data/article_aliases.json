@@ -1,0 +1,93 @@
+{
+  "preamble": "preamble",
+  "the preamble": "preamble",
+
+  "article 1": "1",
+  "art 1": "1",
+  "article i": "1",
+  "article one": "1",
+
+  "article 12": "12",
+  "art 12": "12",
+  "article twelve": "12",
+
+  "fundamental rights": "12-35",
+  "rights of citizens": "12-35",
+
+  "article 14": "14",
+  "art 14": "14",
+  "article xiv": "14",
+  "article fourteen": "14",
+  "right to equality": "14",
+  "equality": "14",
+
+  "article 15": "15",
+  "art 15": "15",
+  "article xv": "15",
+  "article fifteen": "15",
+  "prohibition of discrimination": "15",
+
+  "article 16": "16",
+  "art 16": "16",
+  "article xvi": "16",
+  "article sixteen": "16",
+  "equality of opportunity": "16",
+
+  "article 17": "17",
+  "art 17": "17",
+  "abolition of untouchability": "17",
+
+  "article 19": "19",
+  "art 19": "19",
+  "article xix": "19",
+  "article nineteen": "19",
+  "freedom of speech": "19",
+  "freedom of expression": "19",
+
+  "article 21": "21",
+  "art 21": "21",
+  "article xxi": "21",
+  "article twenty one": "21",
+  "right to life and personal liberty": "21",
+
+  "article 32": "32",
+  "art 32": "32",
+  "article xxxii": "32",
+  "article thirty two": "32",
+  "right to constitutional remedies": "32",
+
+  "article 36": "36-51",
+  "directive principles": "36-51",
+  "directive principles of state policy": "36-51",
+
+  "article 50": "50",
+  "secularism": "50",
+
+  "article 368": "368",
+  "art 368": "368",
+  "amendment procedure": "368",
+
+  "article 370": "370",
+  "art 370": "370",
+  "article three seventy": "370",
+
+  "part iii": "12-35",
+  "part iv": "36-51",
+  "part iv a": "51a",
+
+  "article fourteen": "14",
+  "article nineteen": "19",
+  "article twenty one": "21",
+  "article thirty two": "32",
+
+  "right to property": "pre-44th", 
+  "property right": "pre-44th",
+
+  "article 103": "103",
+  "article 104": "104",
+  "article 105": "105",
+
+  "constitution": "full_text",
+  "full constitution": "full_text",
+  "full text": "full_text"
+}

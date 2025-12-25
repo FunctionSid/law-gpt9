@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Justice balance scale icon for LawGPT">
+<rect width="128" height="128" rx="24" fill="#0b1f3a"/>
+
+<line x1="64" y1="24" x2="64" y2="80" stroke="#7bbcff" stroke-width="6"/>
+<line x1="32" y1="40" x2="96" y2="40" stroke="#7bbcff" stroke-width="6"/>
+<path d="M24 40l-12 24h24z" fill="#7bbcff"/>
+<path d="M104 40l-12 24h24z" fill="#7bbcff"/>
+
+</svg>

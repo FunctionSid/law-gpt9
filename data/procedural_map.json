@@ -1,0 +1,57 @@
+{
+  "murder": ["103"],
+  "punishment for murder": ["103"],
+  "murder by life convict": ["104"],
+  "culpable homicide": ["105"],
+  "culpable homicide not amounting to murder": ["105"],
+  "attempt to murder": ["109"],
+  "abetment": ["55"],
+  "abetment of crime": ["55"],
+  "abetment of suicide": ["117"],
+  "abetment of suicide of child or unsound mind": ["117"],
+  "causing death by negligence": ["109"],
+  "punishment for abetment": ["55"],
+
+  "arrest": ["39", "41"],
+  "arrest without warrant": ["39", "41"],
+  "powers of arrest": ["39", "41"],
+
+  "bail": ["167", "168"],
+  "bail procedure": ["167", "168"],
+  "remand": ["167"],
+  "custody": ["167"],
+
+  "search and seizure": ["103", "104"],
+  "search": ["103"],
+  "seizure": ["104"],
+
+  "investigation": ["155"],
+  "investigation powers": ["155"],
+  "police investigation": ["155"],
+
+  "trial procedure": ["259"],
+  "trial process": ["259"],
+  "appeal": ["268"],
+  "appeal process": ["268"],
+  "appeal procedure": ["268"],
+
+  "evidence": ["147", "148"],
+  "rules of evidence": ["147", "148"],
+  "witness": ["147", "148"],
+
+  "fraud": ["318"],
+  "cheating": ["319"],
+  "theft": ["303"],
+  "criminal trespass": ["323"],
+  "kidnapping": ["356"],
+  "rape": ["63"],
+  "sexual offences": ["63", "65"],
+  "dowry death": ["73"],
+  "forgery": ["348"],
+  "criminal conspiracy": ["50"],
+
+  "default mapping note": [
+    "These section numbers are based on common structure of BNS 2023.",
+    "Please verify against your own bharatiya_nyaya_sanhita_2023_text.txt to confirm numbering."
+  ]
+}
