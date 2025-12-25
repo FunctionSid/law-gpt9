@@ -27,7 +27,6 @@ const __dirname = path.dirname(__filename);
 // --- SESSION & LOGGING ---
 const chatHistory = new Map(); 
 const LOG_FILE = path.join(__dirname, 'server.log');
-const DB_PATH = path.resolve(__dirname, "data", "sqlite3", "lawgpt_vectors.sqlite");
 
 function log(message) {
     const logLine = `[${new Date().toLocaleTimeString()}] ${message}`;
@@ -37,33 +36,32 @@ function log(message) {
     } catch (err) { /* silent log fail */ }
 }
 
-// --- CORE LOGIC: SHARED PROCESSOR ---
+// --- CORE LOGIC: SHARED PROCESSOR (RESTORED ORIGINAL) ---
 async function processLegalQuery(userQuery, requestedDataset) {
     let q = userQuery.trim();
     let lower = q.toLowerCase();
     let dataset = requestedDataset || "all";
     let notice = "";
 
-    // A. Local Small Talk (Saves $$ and Time)
+    // A. Local Small Talk
     const basic = getBasicResponse(q);
     if (basic) return { isBasic: true, answer: basic };
 
-    // B1. NEW: Check for CNR Number (High Priority)
-    // Automatically detects if the user entered a 16-digit alphanumeric CNR
+    // B1. Check for CNR Number (High Priority)
     const cnrMatch = q.match(/[A-Z0-9]{16}/i);
     if (cnrMatch) {
         const cnrResult = searchByCNR(cnrMatch[0]);
         return { isBasic: true, answer: cnrResult };
     }
 
-    // B2. Check for Statistics (NJDG Data) - UPDATED TO USE FILTERED SERVICE
+    // B2. Check for Statistics (NJDG Data)
     const isStatsQuery = lower.includes("pending") || lower.includes("case") || lower.includes("stat");
     if (isStatsQuery) {
         const statsAnswer = getJudicialStats(q);
         if (statsAnswer) return { isBasic: true, answer: statsAnswer };
     }
 
-    // C. Intent Detection (Constitution vs BNS)
+    // C. Intent Detection
     const intent = await classifyIntent(q);
     if (intent.dataset !== "all") dataset = intent.dataset;
 
@@ -75,7 +73,7 @@ async function processLegalQuery(userQuery, requestedDataset) {
         q = `Section ${bns} Bharatiya Nyaya Sanhita`;
     }
 
-    // E. Retrieval (Article/Section or Semantic Search)
+    // E. Retrieval
     const isDirect = q.match(/\b(section|article|ipc|bns|sec|art)\b/i);
     let hits = [];
 
@@ -95,9 +93,14 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 app.set("view engine", "ejs");
 
+// --- FIX: ROOT ROUTE FOR LINUX HEALTH CHECKS ---
+app.get("/", (req, res) => {
+    res.send("Law-GPT Server is Active");
+});
+
 app.get("/chat", (req, res) => res.render("chat"));
 
-// --- WEB ENDPOINT ---
+// --- WEB ENDPOINT (RESTORED ORIGINAL) ---
 app.post("/api/ask", async (req, res) => {
     try {
         const { q: userQ, sessionId = 'default' } = req.body;
@@ -125,7 +128,7 @@ app.post("/api/ask", async (req, res) => {
     }
 });
 
-// --- TELEGRAM BOT ---
+// --- TELEGRAM BOT (RESTORED ORIGINAL) ---
 const bot = new Telegraf(process.env.TELEGRAM_BOT_TOKEN);
 
 bot.catch((err, ctx) => {
@@ -152,14 +155,16 @@ bot.on('text', async (ctx) => {
 const start = async () => {
     try {
         await init(); 
-        const PORT = CONFIG.port || 3000;
+        
+        // --- FIX: PORT BINDING FOR LINUX WEB APP ---
+        const PORT = process.env.PORT || CONFIG.port || 3000;
+        
         app.listen(PORT, () => log(`✅ Web Server: port ${PORT}`));
         
         bot.launch()
             .then(() => log("🤖 Telegram Bot: Active"))
             .catch(e => log(`❌ Bot Failed: ${e.message}`));
 
-        // Initialize NJDG Automation
         initStatsCron();
 
     } catch (err) {
