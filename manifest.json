@@ -1,0 +1,101 @@
+{
+  "manifest": {
+    "apis": {
+      "custom": {
+        "endpoint": {
+          "sslCertificateType": "Wildcard",
+          "uri": "https://law-gpt9-test.azurewebsites.net/alexa"
+        },
+        "interfaces": [],
+        "locales": {},
+        "regions": {
+          "EU": {
+            "endpoint": {
+              "uri": "https://law-gpt9-test.azurewebsites.net/alexa"
+            }
+          },
+          "NA": {
+            "endpoint": {
+              "uri": "https://law-gpt9-test.azurewebsites.net/alexa"
+            }
+          },
+          "FE": {
+            "endpoint": {
+              "uri": "https://law-gpt9-test.azurewebsites.net/alexa"
+            }
+          }
+        }
+      }
+    },
+    "manifestVersion": "1.0",
+    "publishingInformation": {
+      "automaticClonedLocale": {
+        "locales": [
+          {
+            "source": "en-IN"
+          }
+        ]
+      },
+      "distributionCountries": [],
+      "isAvailableWorldwide": true,
+      "locales": {
+        "en-CA": {
+          "description": "Sample Full Description",
+          "examplePhrases": [
+            "Alexa open hello world",
+            "hello",
+            "help"
+          ],
+          "keywords": [],
+          "name": "law gpt",
+          "summary": "Sample Short Description"
+        },
+        "en-US": {
+          "description": "Sample Full Description",
+          "examplePhrases": [
+            "Alexa open hello world",
+            "hello",
+            "help"
+          ],
+          "keywords": [],
+          "name": "law gpt",
+          "summary": "Sample Short Description"
+        },
+        "en-IN": {
+          "description": "Sample Full Description",
+          "examplePhrases": [
+            "Alexa open hello world",
+            "hello",
+            "help"
+          ],
+          "keywords": [],
+          "name": "law gpt",
+          "summary": "Sample Short Description"
+        },
+        "en-AU": {
+          "description": "Sample Full Description",
+          "examplePhrases": [
+            "Alexa open hello world",
+            "hello",
+            "help"
+          ],
+          "keywords": [],
+          "name": "law gpt",
+          "summary": "Sample Short Description"
+        },
+        "en-GB": {
+          "description": "Sample Full Description",
+          "examplePhrases": [
+            "Alexa open hello world",
+            "hello",
+            "help"
+          ],
+          "keywords": [],
+          "name": "law gpt",
+          "summary": "Sample Short Description"
+        }
+      },
+      "testingInstructions": "Sample Testing Instructions."
+    }
+  }
+}
