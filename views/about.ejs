@@ -1,239 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <title>About LawGPT - Instructions & Credits</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8" /><title>Settings & Help - LawGPT</title>
   <style>
-    :root {
-      /* Theme from your existing project */
-      --bg-color: #0b1f3a;       /* Deep Navy Blue */
-      --card-bg: #112d52;        /* Slightly lighter for contrast */
-      --text-main: #e0e6ed;      /* Off-white */
-      --accent: #7bbcff;         /* Muted Light Blue */
-      --highlight: #60a5fa;      /* Soft Cyan for links/focus */
-      --btn-hover: #0088cc;      /* Telegram Blue for hover */
-    }
-
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', system-ui, sans-serif;
-      background: var(--bg-color);
-      color: var(--text-main);
-      line-height: 1.6;
-      padding: 0;
-    }
-
-    /* Skip Link for Accessibility */
-    .skip-link {
-      position: absolute;
-      top: -40px;
-      left: 0;
-      background: var(--highlight);
-      color: #000;
-      padding: 8px;
-      z-index: 100;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .skip-link:focus { top: 0; }
-
-    header {
-      background: var(--card-bg);
-      padding: 1rem;
-      border-bottom: 2px solid var(--accent);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .logo-container {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .logo-img {
-      height: 50px;
-      width: auto;
-    }
-
-    nav a {
-      color: var(--text-main);
-      text-decoration: none;
-      font-weight: 600;
-      border: 1px solid var(--accent);
-      padding: 8px 16px;
-      border-radius: 6px;
-      transition: background 0.2s;
-    }
-    nav a:hover, nav a:focus {
-      background: var(--accent);
-      color: var(--bg-color);
-    }
-
-    main {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
-
-    section {
-      background: var(--card-bg);
-      padding: 20px;
-      border-radius: 12px;
-      margin-bottom: 2rem;
-      border: 1px solid #1f4068;
-    }
-
-    h1, h2 { color: var(--accent); margin-top: 0; }
-    h3 { color: var(--text-main); border-bottom: 1px solid #1f4068; padding-bottom: 5px; margin-top: 20px; }
-    
-    .icon-heading {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    
-    .icon-small {
-      width: 32px;
-      height: 32px;
-    }
-
-    ul, ol { padding-left: 20px; }
-    li { margin-bottom: 8px; }
-
-    /* Keyboard Shortcut Keys styling */
-    kbd {
-      background: #061221;
-      border: 1px solid var(--accent);
-      border-radius: 4px;
-      padding: 2px 6px;
-      font-size: 0.9em;
-      font-family: monospace;
-      color: var(--highlight);
-    }
-
-    /* Specific Telegram Button Styling */
-    .telegram-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background-color: var(--accent);
-      color: var(--bg-color);
-      padding: 12px 24px;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: all 0.3s ease;
-      margin: 15px 0;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-    }
-    
-    .telegram-btn:hover {
-      background-color: var(--btn-hover);
-      color: white;
-      transform: translateY(-2px);
-    }
-
-    .telegram-btn svg {
-      width: 24px;
-      height: 24px;
-      fill: currentColor;
-    }
-
-    code {
-      background-color: #061221;
-      padding: 2px 6px;
-      border-radius: 4px;
-      color: var(--highlight);
-      font-family: monospace;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9rem;
-      opacity: 0.8;
-      border-top: 1px solid #1f4068;
-      margin-top: 2rem;
-    }
+    :root { --bg: #0b1f3a; --panel: #112d52; --text: #e0e6ed; --accent: #7bbcff; }
+    body { background: var(--bg); color: var(--text); font-family: sans-serif; padding: 20px; line-height: 1.6; }
+    header { background: var(--panel); padding: 1rem; border-bottom: 2px solid var(--accent); display: flex; justify-content: space-between; align-items: center; }
+    section { background: var(--panel); padding: 20px; border-radius: 12px; margin-top: 20px; border: 1px solid #1f4068; }
+    h2 { color: var(--accent); margin-top: 0; }
+    select { width: 100%; padding: 12px; background: #061221; color: white; border: 1px solid var(--accent); border-radius: 8px; font-size: 1rem; }
+    .nav-btn { color: var(--text); text-decoration: none; border: 1px solid var(--accent); padding: 8px 16px; border-radius: 6px; font-weight: bold; }
+    .test-btn { margin-top: 15px; padding: 10px 20px; background: var(--accent); color: var(--bg); border: none; border-radius: 20px; cursor: pointer; font-weight: bold; }
   </style>
 </head>
 <body>
-  <a href="#main-content" class="skip-link">Skip to content</a>
-
-  <header role="banner">
-    <div class="logo-container">
-      <img src="/Images/law-gpt-logo.png" alt="LawGPT Logo: A shield with a balance scale" class="logo-img" />
-      <h1>About LawGPT</h1>
-    </div>
-    <nav aria-label="Main Navigation">
-      <a href="/chat" aria-label="Go to Chat Bot">Open Chat Bot</a>
-    </nav>
-  </header>
-
-  <main id="main-content">
-    
-    <section aria-labelledby="intro-heading">
-      <div class="icon-heading">
-        <img src="/Images/justice_scale_icon.svg" alt="" class="icon-small" aria-hidden="true" />
-        <h2 id="intro-heading">Who We Are</h2>
-      </div>
-      <p>
-        <strong>LawGPT</strong> is an accessible AI legal assistant designed to make Indian Law easy to understand for everyone.
-      </p>
+  <header><h1>LawGPT Settings</h1><nav><a href="/chat" class="nav-btn">Go to Chat</a></nav></header>
+  <main>
+    <section>
+      <h2>Voice Selection</h2>
+      <select id="voice-list" aria-label="Select Voice"></select>
+      <button id="test-voice" class="test-btn">Test Voice</button>
+    </section>
+    <section>
+      <h2>Hands-Free Help</h2>
       <ul>
-        <li><strong>Creator:</strong> Siddharth Kalantri from Bhiwandi.</li>
-        <li><strong>Mission:</strong> To bridge the gap between complex legal texts and common citizens using AI.</li>
-        <li><strong>Knowledge Base:</strong> Constitution of India and Bharatiya Nyaya Sanhita (BNS) 2023.</li>
+        <li>Wake: <strong>"Hey LawGPT"</strong></li>
+        <li>Control: <strong>"Stop"</strong>, <strong>"Pause"</strong>, <strong>"Resume"</strong></li>
       </ul>
     </section>
-
-    <section aria-labelledby="web-instructions">
-      <div class="icon-heading">
-        <img src="/Images/mic_icon.svg" alt="" class="icon-small" aria-hidden="true" />
-        <h2 id="web-instructions">How to Operate (Web Chat)</h2>
-      </div>
-      <p>The web chat is designed for accessibility and ease of use.</p>
-      <ul>
-        <li><strong>Typing:</strong> Type your legal question in the text box.</li>
-        <li><strong>Sending:</strong> Click the "Send" button or press <kbd>Ctrl</kbd> + <kbd>Enter</kbd>.</li>
-        <li><strong>Old vs New Laws:</strong> By default, the bot uses new BNS 2023 laws. To ask about old laws, simply type "IPC" in your question (e.g., <em>"What is IPC 302?"</em>).</li>
-      </ul>
-    </section>
-
-    <section aria-labelledby="telegram-instructions">
-      <div class="icon-heading">
-        <img src="/Images/telegram_bot_icon.svg" alt="" class="icon-small" aria-hidden="true" />
-        <h2 id="telegram-instructions">Connect with SmartBot</h2>
-      </div>
-      <p>
-        You can access our legal assistant directly on your mobile or desktop app via Telegram or Unigram.
-      </p>
-
-      <a href="https://t.me/SmartBotGiver_bot" target="_blank" class="telegram-btn">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.293-.605.293l.214-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.942z"/>
-        </svg>
-        Open SmartBot in Telegram
-      </a>
-
-      <h3>How to Find Manually (Unigram / Telegram)</h3>
-      <p>If the button above does not open the app automatically, follow these steps:</p>
-      <ol>
-        <li>Open the <strong>Telegram</strong> or <strong>Unigram</strong> app on your device.</li>
-        <li>Tap the <strong>Search icon</strong> (🔍) usually located at the top right.</li>
-        <li>Type the exact username: <code>@SmartBotGiver_bot</code></li>
-        <li>Look for the bot named <strong>smartbot</strong> (it may say "created by Siddharth Kalantri" in the bio).</li>
-        <li>Select it and tap the big <strong>Start</strong> button to begin chatting.</li>
-      </ol>
-    </section>
-
   </main>
-
-  <footer role="contentinfo">
-    <p>Law made accessible through AI. &copy; 2025 LawGPT.</p>
-  </footer>
+  <script>
+    const voiceList = document.getElementById('voice-list');
+    function loadVoices() {
+      const voices = window.speechSynthesis.getVoices();
+      voiceList.innerHTML = voices.map((v, i) => `<option value="${i}">${v.name} (${v.lang})</option>`).join('');
+      const saved = localStorage.getItem('preferredVoice');
+      if (saved !== null) voiceList.value = saved;
+    }
+    window.speechSynthesis.onvoiceschanged = loadVoices; loadVoices();
+    voiceList.addEventListener('change', () => localStorage.setItem('preferredVoice', voiceList.value));
+    document.getElementById('test-voice').addEventListener('click', () => {
+      const utterance = new SpeechSynthesisUtterance("Namaste Siddharth.");
+      utterance.voice = window.speechSynthesis.getVoices()[voiceList.value];
+      window.speechSynthesis.speak(utterance);
+    });
+  </script>
 </body>
 </html>
