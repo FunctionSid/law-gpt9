@@ -19,6 +19,8 @@ import alexaRouter from "./routes/alexa.js";
 dotenv.config();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+// Logging Logic (Kept as is)
 const LOG_FILE = path.join(__dirname, 'server.log');
 function log(message) {
     const logLine = `[${new Date().toLocaleTimeString()}] ${message}`;
@@ -26,6 +28,7 @@ function log(message) {
     try { fs.appendFileSync(LOG_FILE, logLine + '\n'); } catch (err) {}
 }
 
+// Legal Query Logic (Kept as is)
 export async function processLegalQuery(userQuery, requestedDataset) {
     let q = userQuery.trim();
     let lower = q.toLowerCase();
@@ -57,12 +60,14 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 app.set("view engine", "ejs");
 
+// FIXED ROUTES: Connecting buttons to about.ejs
 app.get("/", (req, res) => res.render("chat"));
 app.get("/chat", (req, res) => res.render("chat"));
 app.get("/about", (req, res) => res.render("about"));
 app.get("/help", (req, res) => res.render("about"));
 app.use("/alexa", alexaRouter);
 
+// API Logic (Kept as is)
 app.post("/api/ask", async (req, res) => {
     try {
         const { q: userQ } = req.body;
@@ -78,6 +83,7 @@ app.post("/api/ask", async (req, res) => {
     } catch (e) { log(`API Error: ${e.message}`); res.status(500).json({ error: "Service unavailable." }); }
 });
 
+// Telegram Bot (Kept as is)
 const bot = new Telegraf(process.env.TELEGRAM_BOT_TOKEN);
 bot.on('text', async (ctx) => {
     try {
@@ -89,6 +95,7 @@ bot.on('text', async (ctx) => {
     } catch (err) { log(`Telegram Bot Error: ${err.message}`); }
 });
 
+// Startup Logic (Kept as is)
 const start = async () => {
     try {
         await init();

@@ -7,7 +7,8 @@ const hfToggle = document.getElementById('hf-toggle');
 let hfInstance = null;
 
 async function handleSubmit(text) {
-    const q = text || input.value; if (!q) return;
+    const q = text || input.value;
+    if (!q) return;
     appendMessage(q, 'user');
     input.value = '';
     const res = await fetch('/api/ask', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ q }) });
@@ -16,8 +17,21 @@ async function handleSubmit(text) {
     appendMessage(data.answer, 'bot', data.sources);
     speak(data.answer);
 }
+
 hfToggle.addEventListener('change', () => {
-    if (hfToggle.checked) hfInstance = startHandsFree(() => speak("Ready Siddharth."), (cmd) => handleSubmit(cmd));
-    else if (hfInstance) hfInstance.stop();
+    if (hfToggle.checked) {
+        hfInstance = startHandsFree(
+            () => {
+                // Flash the input or provide a sound hint
+                input.placeholder = "Listening...";
+                speak("Ready Siddharth.");
+            }, 
+            (cmd) => handleSubmit(cmd)
+        );
+    } else if (hfInstance) {
+        hfInstance.stop();
+        input.placeholder = "Type a legal question...";
+    }
 });
+
 form.addEventListener('submit', (e) => { e.preventDefault(); handleSubmit(); });
