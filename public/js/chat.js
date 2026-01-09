@@ -62,10 +62,10 @@ async function handleSend() {
     userInput.value = '';
 
     try {
-        const response = await fetch('/api/chat', {
+        const response = await fetch('/api/ask', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ message: text })
+            body: JSON.stringify({ q: text })
         });
         const data = await response.json();
         addMessage('Bot', data.reply);
