@@ -4,7 +4,7 @@ import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const DB_PATH = path.resolve(__dirname, "..", "data", "sqlite3", "lawgpt_vectors.sqlite");
+const DB_PATH = '/home/site/wwwroot/data/sqlite3/lawgpt_vectors.sqlite';
 
 /**
  * Formats numbers into the Indian numbering system (e.g., 1,10,57,023)

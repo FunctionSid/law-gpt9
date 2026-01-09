@@ -11,7 +11,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // ✅ FIX: Use the Environment Variable you set in Azure, fallback to local if missing
-const DB_PATH = process.env.DATABASE_PATH 
+const DB_PATH = '/home/site/wwwroot/data/sqlite3/lawgpt_vectors.sqlite';
     ? path.resolve(process.env.DATABASE_PATH) 
     : path.resolve(__dirname, "..", "data", "sqlite3", "lawgpt_vectors.sqlite");
 
