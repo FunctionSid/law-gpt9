@@ -10,7 +10,7 @@ const __dirname = path.dirname(__filename);
 // --- LINUX PATHS FOR AZURE ---
 // We use forward slashes (/) and the .so extension for Linux
 const path = require('path');
-const DB_FILE = process.env.DATABASE_PATH || path.join(__dirname, '..', 'data', 'sqlite3', 'lawgpt_vectors.sqlite');
+const DB_FILE = '/home/site/wwwroot/data/sqlite3/lawgpt_vectors.sqlite';
 const EXT_FILE = path.resolve(__dirname, "..", "node_modules/sqlite-vec-linux-x64/vec0.so");
 
 let db = null;
@@ -118,5 +118,6 @@ export async function findBySection(id) {
     await init();
     return db.prepare(`SELECT text, source FROM documents WHERE text LIKE ? LIMIT 5`).all(`%Section ${id}%`);
 }
+
 
 
