@@ -1,47 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" /><title>Settings & Help - LawGPT</title>
+  <meta charset="utf-8" />
+  <title>Settings & Help - LawGPT</title>
   <style>
-    :root { --bg: #0b1f3a; --panel: #112d52; --text: #e0e6ed; --accent: #7bbcff; }
-    body { background: var(--bg); color: var(--text); font-family: sans-serif; padding: 20px; line-height: 1.6; }
-    header { background: var(--panel); padding: 1rem; border-bottom: 2px solid var(--accent); display: flex; justify-content: space-between; align-items: center; }
-    section { background: var(--panel); padding: 20px; border-radius: 12px; margin-top: 20px; border: 1px solid #1f4068; }
-    h2 { color: var(--accent); margin-top: 0; }
-    select { width: 100%; padding: 12px; background: #061221; color: white; border: 1px solid var(--accent); border-radius: 8px; font-size: 1rem; }
-    .nav-btn { color: var(--text); text-decoration: none; border: 1px solid var(--accent); padding: 8px 16px; border-radius: 6px; font-weight: bold; }
-    .test-btn { margin-top: 15px; padding: 10px 20px; background: var(--accent); color: var(--bg); border: none; border-radius: 20px; cursor: pointer; font-weight: bold; }
+    /* Professional Gold and Blue Theme */
+    :root { 
+      --bg: #050a14; 
+      --panel: #0f172a; 
+      --accent: #d4af37; /* Gold */
+      --btn-blue: #0056b3;
+      --text: #f8fafc; 
+    }
+
+    body { 
+      background: var(--bg); 
+      color: var(--text); 
+      font-family: 'Segoe UI', sans-serif; 
+      padding: 0; 
+      margin: 0; 
+      line-height: 1.6; 
+    }
+
+    header { 
+      background: var(--panel); 
+      padding: 15px 20px; 
+      border-bottom: 2px solid var(--accent); 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+    }
+
+    header h1 { margin: 0; font-size: 1.5rem; color: var(--accent); }
+
+    main { padding: 20px; max-width: 800px; margin: 0 auto; }
+
+    section { 
+      background: var(--panel); 
+      padding: 25px; 
+      border-radius: 12px; 
+      margin-top: 25px; 
+      border: 1px solid #1e293b; 
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    }
+
+    h2 { color: var(--accent); margin-top: 0; border-bottom: 1px solid #334155; padding-bottom: 10px; }
+
+    /* Accessibility: Clear Focus States */
+    select, .nav-btn, .test-btn {
+      outline: none;
+    }
+    select:focus, .nav-btn:focus, .test-btn:focus {
+      outline: 3px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    select { 
+      width: 100%; 
+      padding: 14px; 
+      background: #020617; 
+      color: white; 
+      border: 2px solid #334155; 
+      border-radius: 8px; 
+      font-size: 1rem; 
+      margin-bottom: 15px;
+    }
+
+    .nav-btn { 
+      color: white; 
+      text-decoration: none; 
+      border: 1px solid var(--accent); 
+      padding: 8px 16px; 
+      border-radius: 6px; 
+      font-weight: bold; 
+    }
+
+    .test-btn { 
+      padding: 12px 25px; 
+      background: var(--btn-blue); 
+      color: white; 
+      border: none; 
+      border-radius: 25px; 
+      cursor: pointer; 
+      font-weight: bold; 
+      font-size: 1rem;
+    }
+
+    ul { padding-left: 20px; list-style-type: square; }
+    li { margin-bottom: 12px; }
+    strong { color: var(--accent); }
   </style>
 </head>
 <body>
-  <header><h1>LawGPT Settings</h1><nav><a href="/chat" class="nav-btn">Go to Chat</a></nav></header>
+  <header>
+    <h1>Settings & Help</h1>
+    <nav><a href="/chat" class="nav-btn" aria-label="Go back to chat page">Go to Chat</a></nav>
+  </header>
+
   <main>
     <section>
       <h2>Voice Selection</h2>
-      <select id="voice-list" aria-label="Select Voice"></select>
-      <button id="test-voice" class="test-btn">Test Voice</button>
+      <p>Choose the voice you want the AI to use:</p>
+      <select id="voice-list" aria-label="Select preferred AI voice"></select>
+      <button id="test-voice" class="test-btn" aria-label="Test the selected voice">Test Voice</button>
     </section>
+
     <section>
-      <h2>Hands-Free Help</h2>
+      <h2>Hands-Free & Keyboard Shortcuts</h2>
+      <p>Control LawGPT without using a mouse:</p>
       <ul>
-        <li>Wake: <strong>"Hey LawGPT"</strong></li>
-        <li>Control: <strong>"Stop"</strong>, <strong>"Pause"</strong>, <strong>"Resume"</strong></li>
+        <li><strong>"Hey LawGPT"</strong>: Wakes up the bot to listen.</li>
+        <li><strong>"Stop"</strong> or <strong>"Pause"</strong>: Stops the bot from speaking.</li>
+        <li><strong>"Resume"</strong>: Continues the last response.</li>
+        <li><strong>Escape Key</strong>: Instantly kills the audio (best for screen readers).</li>
+        <li><strong>Ctrl + Enter</strong>: Sends your typed message immediately.</li>
       </ul>
     </section>
   </main>
+
   <script>
     const voiceList = document.getElementById('voice-list');
+    
     function loadVoices() {
       const voices = window.speechSynthesis.getVoices();
-      voiceList.innerHTML = voices.map((v, i) => `<option value="${i}">${v.name} (${v.lang})</option>`).join('');
+      voiceList.innerHTML = voices
+        .map((v, i) => `<option value="${i}">${v.name} (${v.lang})</option>`)
+        .join('');
+      
       const saved = localStorage.getItem('preferredVoice');
       if (saved !== null) voiceList.value = saved;
     }
-    window.speechSynthesis.onvoiceschanged = loadVoices; loadVoices();
-    voiceList.addEventListener('change', () => localStorage.setItem('preferredVoice', voiceList.value));
+
+    window.speechSynthesis.onvoiceschanged = loadVoices; 
+    loadVoices();
+
+    voiceList.addEventListener('change', () => {
+      localStorage.setItem('preferredVoice', voiceList.value);
+    });
+
     document.getElementById('test-voice').addEventListener('click', () => {
-      const utterance = new SpeechSynthesisUtterance("Namaste Siddharth.");
-      utterance.voice = window.speechSynthesis.getVoices()[voiceList.value];
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance("Namaste Siddharth. This voice is now active.");
+      const voices = window.speechSynthesis.getVoices();
+      utterance.voice = voices[voiceList.value];
       window.speechSynthesis.speak(utterance);
     });
   </script>

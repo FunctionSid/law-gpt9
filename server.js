@@ -84,16 +84,21 @@ app.post("/api/ask", async (req, res) => {
 });
 
 // Telegram Bot (Kept as is)
-const bot = new Telegraf(process.env.TELEGRAM_BOT_TOKEN);
-bot.on('text', async (ctx) => {
-    try {
-        const result = await processLegalQuery(ctx.message.text);
-        if (result.isBasic) return ctx.reply(result.answer);
-        const messages = [{ role: "user", content: `Context: ${result.hits.map(h => h.text).join("\n")}\nQuestion: ${result.q}` }];
-        const answer = await azureChat(messages);
-        ctx.reply(result.notice ? `*${result.notice}*\n\n${answer}` : answer, { parse_mode: 'Markdown' });
-    } catch (err) { log(`Telegram Bot Error: ${err.message}`); }
-});
+const botToken = process.env.TELEGRAM_BOT_TOKEN;
+if (botToken) {
+    const bot = new Telegraf(botToken);
+    bot.on('text', async (ctx) => {
+        try {
+            const result = await processLegalQuery(ctx.message.text);
+            if (result.isBasic) return ctx.reply(result.answer);
+            const messages = [{ role: "user", content: `Context: ${result.hits.map(h => h.text).join("\n")}\nQuestion: ${result.q}` }];
+            const answer = await azureChat(messages);
+            ctx.reply(result.notice ? `*${result.notice}*\n\n${answer}` : answer, { parse_mode: 'Markdown' });
+        } catch (err) { log(`Telegram Bot Error: ${err.message}`); }
+    });
+    bot.launch();
+    log("✅ Telegram Bot is active.");
+}
 
 // Startup Logic (Kept as is)
 const start = async () => {

@@ -1,26 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" /><title>LawGPT - Chat</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LawGPT - Siddharth</title>
   <style>
-    :root { --bg: #0b1f3a; --panel: #112d52; --text: #e0e6ed; --accent: #7bbcff; }
-    body { background: var(--bg); color: var(--text); font-family: sans-serif; display: flex; flex-direction: column; height: 100vh; margin: 0; }
-    header { background: var(--panel); padding: 10px; border-bottom: 1px solid #1f4068; display: flex; justify-content: space-between; align-items: center; }
-    .hf-bar { padding: 10px; background: #061221; text-align: center; color: var(--accent); font-weight: bold; border-bottom: 1px solid #1f4068; }
-    main { flex: 1; overflow-y: auto; padding: 20px; }
-    .input-area { background: var(--panel); padding: 20px; }
-    form { display: flex; gap: 10px; max-width: 800px; margin: 0 auto; }
-    input { flex: 1; padding: 12px; border-radius: 20px; border: none; background: #061221; color: #fff; }
-    button { background: var(--accent); border: none; border-radius: 20px; padding: 0 20px; cursor: pointer; font-weight: bold; }
+    /* Professional Legal Theme */
+    :root { 
+      --bg: #050a14; 
+      --panel: #0f172a; 
+      --accent: #d4af37; /* Gold */
+      --btn-blue: #0056b3;
+      --text: #f8fafc; 
+    }
+
+    body { 
+      background: var(--bg); 
+      color: var(--text); 
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+      display: flex; 
+      flex-direction: column; 
+      height: 100vh; 
+      margin: 0; 
+    }
+
+    /* Header Styling */
+    header { 
+      background: var(--panel); 
+      padding: 15px 20px; 
+      border-bottom: 2px solid var(--accent); 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+    }
+
+    header h1 { margin: 0; font-size: 1.5rem; color: var(--accent); }
+
+    .hf-bar { 
+      padding: 8px; 
+      background: #1e293b; 
+      text-align: center; 
+      color: #38bdf8; 
+      font-size: 0.9rem;
+      border-bottom: 1px solid #334155; 
+    }
+
+    /* Chat Area - Message Bubbles */
+    main { 
+      flex: 1; 
+      overflow-y: auto; 
+      padding: 20px; 
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .msg { 
+      max-width: 85%;
+      padding: 12px 18px; 
+      border-radius: 12px; 
+      background: var(--panel); 
+      line-height: 1.6;
+      border: 1px solid #1e293b;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    /* Highlight Bot responses with a subtle left border */
+    .msg-bot { border-left: 4px solid var(--accent); }
+
+    /* Input Area */
+    .input-area { 
+      background: var(--panel); 
+      padding: 20px; 
+      border-top: 1px solid #334155; 
+    }
+
+    form { 
+      display: flex; 
+      gap: 12px; 
+      max-width: 900px; 
+      margin: 0 auto; 
+      align-items: center; 
+    }
+
+    input { 
+      flex: 1; 
+      padding: 14px 20px; 
+      border-radius: 25px; 
+      border: 2px solid #334155; 
+      background: #020617; 
+      color: #fff; 
+      font-size: 1rem; 
+    }
+
+    input:focus { border-color: var(--accent); outline: none; }
+
+    button { 
+      background: var(--btn-blue); 
+      border: none; 
+      border-radius: 25px; 
+      padding: 12px 24px; 
+      cursor: pointer; 
+      font-weight: bold; 
+      color: white; 
+      transition: background 0.2s;
+    }
+
+    button:hover, button:focus { background: #004494; outline: 2px solid var(--accent); }
+
+    #mic-btn { background: #166534; }
+    #mic-btn:hover { background: #14532d; }
+
+    /* Settings Link */
+    .nav-link {
+      color: white; 
+      text-decoration: none; 
+      border: 1px solid var(--accent); 
+      padding: 6px 12px; 
+      border-radius: 6px;
+      font-size: 0.9rem;
+    }
+    .nav-link:focus { background: var(--accent); color: black; }
+
   </style>
 </head>
 <body>
-  <header><h1>LawGPT</h1><a href="/about" style="color:white; text-decoration:none; border:1px solid var(--accent); padding:5px; border-radius:4px;">Settings</a></header>
-  <div class="hf-bar"><input type="checkbox" id="hf-toggle"> <label for="hf-toggle">Hands-Free (Say "Hey LawGPT")</label></div>
-  <main id="chat-container"></main>
+  <header>
+    <h1>LawGPT</h1>
+    <nav>
+        <a href="/about" class="nav-link" aria-label="Go to Settings">Settings</a>
+    </nav>
+  </header>
+  
+  <div class="hf-bar" id="hf-status" role="status">Hands-Free Mode: Ready</div>
+
+  <main id="chat-box" role="log" aria-live="polite">
+    <div class="msg"><strong>System:</strong> Welcome, Siddharth. Your Indian legal assistant is ready. Press Ctrl+Enter to send.</div>
+  </main>
+
   <div class="input-area">
-    <form id="chat-form"><input type="text" id="user-input" placeholder="Ask a question..." autocomplete="off"> <button type="submit">Send</button></form>
+    <form id="chat-form" onsubmit="return false;">
+      <input type="text" id="user-input" placeholder="Ask a question..." aria-label="Enter your legal question">
+      <button type="button" id="send-btn" aria-label="Send Message">Send</button>
+      <button type="button" id="mic-btn" aria-label="Microphone">
+        <img src="/Images/mic_icon.svg" alt="" width="20" height="20" aria-hidden="true"> Mic
+      </button>
+    </form>
   </div>
-  <script type="module" src="/js/chat.js"></script>
+
+  <script src="/js/chat.js"></script>
 </body>
 </html>
