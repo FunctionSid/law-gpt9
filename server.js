@@ -1,25 +1,31 @@
 import express from "express";
 import dotenv from "dotenv";
-import path from "path";
-import { fileURLToPath } from "url";
-import healthRoutes from "./routes/healthRoutes.js";
 import { init } from "./utils/retriever.js";
 
+console.log("📍 [TRACE 1] Script is starting...");
 dotenv.config();
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
 const app = express();
 const port = process.env.PORT || 8080;
 
-app.use(express.json());
-app.use(express.static(path.join(__dirname, "public")));
-app.set("view engine", "ejs");
+console.log("📍 [TRACE 2] Settings loaded. Setting up routes...");
 
-// Connect all routes
-app.use("/health", healthRoutes);
-app.get("/", (req, res) => res.render("chat"));
-app.get("/about", (req, res) => res.render("about"));
+app.get("/health", (req, res) => {
+    console.log("📍 [TRACE 5] Azure Health Check pinged the bot.");
+    res.status(200).send("Healthy");
+});
+
+app.get("/", (req, res) => {
+    res.send("<h1>Law GPT is Online</h1>");
+});
 
 app.listen(port, async () => {
-    await init();
-    console.log(`🚀 Server live on port ${port}`);
+    console.log(`📍 [TRACE 3] Server is now listening on port ${port}`);
+    try {
+        console.log("📍 [TRACE 4] Calling Database Init...");
+        await init();
+        console.log("✅ [SUCCESS] Bot is fully ready!");
+    } catch (err) {
+        console.error("❌ [ERROR] Crash during Database Init:", err.message);
+    }
 });
