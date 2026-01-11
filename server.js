@@ -3,13 +3,13 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { init } from "./utils/retriever.js";
 
-// TELEGRAM IS PAUSED (Commented out to prevent 409 Conflict)
+// TELEGRAM IS PAUSED to prevent the startup timeout
 // import "./bots/telegram.js"; 
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
 
-// Using Port 8080 to match Azure Linux
+// Use Port 8080 which matches your Azure WEBSITES_PORT setting
 const port = process.env.PORT || 8080;
 
 app.set("views", path.join(__dirname, "views"));
@@ -17,7 +17,7 @@ app.set("view engine", "ejs");
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
-// Main Route - All your chat features are here
+// Main Route - All your Indian Legal Assistant features are here
 app.get("/", (req, res) => {
     res.render("chat", { title: "LawGPT - Indian Legal Assistant" });
 });
