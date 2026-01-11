@@ -14,10 +14,17 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 app.set("view engine", "ejs");
 
+// IMPORTANT: Connect the health check for Azure
 app.use("/health", healthRoutes);
 app.get("/", (req, res) => res.render("chat"));
 
 app.listen(port, async () => {
     console.log(`🚀 Server live on port ${port}`);
-    await init().catch(err => console.log("DB Wait: " + err.message));
+    // Initialize database after the server starts
+    try {
+        await init();
+        console.log("✅ Database Ready.");
+    } catch (err) {
+        console.log("❌ DB Error: " + err.message);
+    }
 });
