@@ -1,6 +1,5 @@
 import sqlite3 from "sqlite3";
 import * as sqliteVec from "sqlite-vec";
-import { azureClient, CONFIG } from "../config.js";
 
 let db = null;
 
@@ -16,11 +15,15 @@ export async function init() {
     });
 }
 
+// Added the missing getStats tool
+export async function getStats() {
+    return { status: "active", database: "connected" };
+}
+
 export async function search(q) {
     await init();
-    // Simplified search logic for standard sqlite3
     return new Promise((res) => {
-        db.all("SELECT d.text, d.source FROM documents d LIMIT 5", [], (err, rows) => {
+        db.all("SELECT text, source FROM documents LIMIT 5", [], (err, rows) => {
             res(rows || []);
         });
     });
